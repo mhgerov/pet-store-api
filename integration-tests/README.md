@@ -1,0 +1,1 @@
+https://www.baeldung.com/junit-tests-run-programmatically-from-java
