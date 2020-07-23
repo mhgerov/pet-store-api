@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  description: A simple API to illustrate OpenAPI concepts
+  title: Simple API
+  version: 0.1.0
+servers:
+- url: /
+paths:
+  /pets:
+    get:
+      description: Returns list of all pets in inventory
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Pet'
+                type: array
+          description: Successfully returns pet inventory
+      x-accepts: application/json
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: Successfully added new pet
+      summary: Adds a new pet to inventory
+      x-contentType: application/json
+      x-accepts: application/json
+  /pets/{id}:
+    delete:
+      description: Remove pet from inventory
+      parameters:
+      - description: Id of pet to use
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Successfully removed pet from inventory
+      x-accepts: application/json
+    get:
+      description: Returns single pet by id
+      parameters:
+      - description: Id of pet to use
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: Successfully returns specified pet
+      x-accepts: application/json
+components:
+  schemas:
+    Pet:
+      example:
+        species: species
+        name: name
+        id: 0
+        breed: breed
+      properties:
+        id:
+          description: unique id of pet
+          type: integer
+        name:
+          description: pet's name
+          type: string
+        species:
+          type: string
+        breed:
+          type: string
+      type: object
+

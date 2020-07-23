@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  version: 0.1.0
+  title: Simple API
+  description: A simple API to illustrate OpenAPI concepts
+paths:
+  /pets:
+    get:
+      description: Returns list of all pets in inventory
+      responses:
+        '200':
+          description: Successfully returns pet inventory
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+    post:
+      summary: Adds a new pet to inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        '201':
+          description: Successfully added new pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+  /pets/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: Id of pet to use
+        required: true
+        schema:
+          type: string
+    get:
+      description: Returns single pet by id
+      responses:
+        '200':
+          description: Successfully returns specified pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+    delete:
+      description: Remove pet from inventory
+      responses:
+        '200':
+          description: Successfully removed pet from inventory
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: unique id of pet
+        name:
+          type: string
+          description: pet's name
+        species:
+          type: string
+        breed:
+          type: string
