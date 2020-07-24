@@ -17,7 +17,6 @@ public class JunitStartupApplicationListener implements ApplicationListener<Cont
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        System.out.println("Starting Tests!");
         SummaryGeneratingListener listener = new SummaryGeneratingListener();
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
                 .selectors(selectClass(IntegrationTestsApplicationTests.class))

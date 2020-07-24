@@ -16,5 +16,6 @@
     <modules>
       <module>spring-boot-client</module>
       <module>integration-tests</module>
+      <module>petstore-implementation</module>
     </modules>
 </project>
