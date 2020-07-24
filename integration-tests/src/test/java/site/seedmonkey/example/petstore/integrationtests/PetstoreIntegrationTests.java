@@ -22,7 +22,7 @@ public class PetstoreIntegrationTests {
 
 	@Test
 	void secondTest() {
-		ResponseEntity<Object> objectResponseEntity = restTemplate.postForEntity("http://localhost:8080/pets", null, Object.class);
+		ResponseEntity<Object> objectResponseEntity = restTemplate.postForEntity("/pets", null, Object.class);
 		assertThat(objectResponseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 	}
 }
