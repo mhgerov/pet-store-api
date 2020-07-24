@@ -9,7 +9,6 @@ public class IntegrationTestsApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext run = SpringApplication.run(IntegrationTestsApplication.class, args);
-		run.close();
 	}
 
 }
